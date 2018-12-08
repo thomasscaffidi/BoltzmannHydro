@@ -1,5 +1,5 @@
 
-Wlin=1/1.4;
+Wlin=0.6;
 WoverlBlin=6.3;
 kFdslin=1.0;
 lMClin=0.0;

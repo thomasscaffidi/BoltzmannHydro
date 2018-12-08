@@ -1,5 +1,6 @@
 function MyIntegral = CalculateFT(InputVector,myY,FTindex,Grid,P)
 
+
 W=P.W;
 lB=P.lB;
 
