@@ -3,7 +3,7 @@ print "Hello \n";
 my $cluster="lr2";
 my $n=1;
 
-my $DirName = "Tests";
+my $DirName = $ARGV[0];
 my $BatchFileName = "BaseForScript_cluster_${cluster}_n_${n}.sh";
 
 system("mkdir ".$DirName);
