@@ -1,9 +1,9 @@
 print "Hello \n";
 
-$cluster="lr2";
+my $cluster="lr2";
 my $n=1;
 
-my $DirName = "./Tests/";
+my $DirName = "Tests";
 my $BatchFileName = "BaseForScript_cluster_${cluster}_n_${n}.sh";
 
 system("mkdir ".$DirName);
