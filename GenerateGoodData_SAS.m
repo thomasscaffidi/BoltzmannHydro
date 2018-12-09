@@ -1,12 +1,12 @@
 
-Wlin=0.6;
-WoverlBlin=6.3;
-kFdslin=1.0;
+Wlin=0.7;
+WoverlBlin=[0.5 1 1.5 1.8 2.5 3.1 3.55 4.1 5.1 6.3];
+kFdslin=0.0;
 lMClin=0.0;
 
 Ny=101;
 NPhi=151;
-NFT=51;
+NFT=1;
 
 SineApprox=1;
 
