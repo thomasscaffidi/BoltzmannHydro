@@ -1,12 +1,8 @@
-tic
 
-Wlin=1.0./(0.5:0.1:3);
-WoverlBlin=1.6;
+Wlin=1.0/(0.5:0.1:3);
+WoverlBlin=[1.6];
 kFdslin=0.0;
-lMClin=0.1:0.1:3;
-
-
-FixeslMCoverW=1;
+lMClin=;
 
 Ny=101;
 NPhi=151;
@@ -53,20 +49,16 @@ NlB = length(WoverlBlin);
 index=0;
 AllResults=zeros(N*NlB*length(lMClin)*length(kFdslin),1000);
 
-for iW=1:length(Wlin)
-    W=Wlin(iW);
-    P.W=W;
-    for ilMC =1:length(lMClin)
-        lMC=lMClin(ilMC);
-        if(FixeslMCoverW==1)
-            lMC=lMClin(ilMC)*W;
-        end
-        P.lMC=lMC;
-        for ikFds=1:length(kFdslin)
-            kFds=kFdslin(ikFds);
-            P.Gamma = getGamma(NFT,kFds,lMC,SineApprox);
-            P.l = 1/P.Gamma(IndexFromN(0,NFT));
-            
+for ilMC =1:length(lMClin)
+    lMC=lMClin(ilMC);
+    P.lMC=lMC;
+    for ikFds=1:length(kFdslin)
+        kFds=kFdslin(ikFds);
+        P.Gamma = getGamma(NFT,kFds,lMC,SineApprox);
+        P.l = 1/P.Gamma(IndexFromN(0,NFT));
+        for iW=1:length(Wlin)
+            W=Wlin(iW);
+            P.W=W;
             for ilB=1:length(WoverlBlin)
                 WoverlB = WoverlBlin(ilB);
                 lB = W/WoverlB;
@@ -82,9 +74,9 @@ for iW=1:length(Wlin)
                 MyResultsTemp(1,4)=kFds;
                 MyResultsTemp(1,5)=Ny;
                 MyResultsTemp(1,6)=NPhi;
-                
+
                 result = SolveCompressibleCase(P);
-                
+
                 MyResultsTemp = [MyResultsTemp result];
                 fileName=strcat('Results_W_',num2str(W),'_WoverRc_',...
                     num2str(WoverlB),'_kFds_',num2str(kFds),'_lMC_',...
@@ -97,6 +89,5 @@ for iW=1:length(Wlin)
         end
     end
 end
-toc
 save('AllResults.mat','AllResults')
 return

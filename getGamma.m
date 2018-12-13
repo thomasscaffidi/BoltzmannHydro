@@ -22,7 +22,6 @@ function result = getGamma(NFT,kFds,lMC,SineApprox)
     end
 
 result=Gamma;
-figure
-plot(Gamma,'*-')
+
 
 end
