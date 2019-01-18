@@ -1,10 +1,12 @@
 tic
 
-Wlin=1.0./(0.5:0.1:3);
-WoverlBlin=1.6;
+Npoints=20;
+% Wlin=1.0./(0.5:0.1:3);
+Wlin=logspace(-2,2,Npoints);
+WoverlBlin=1.3;
 kFdslin=0.0;
-lMClin=0.1:0.1:3;
-
+% lMClin=0.1:0.1:3;
+lMClin=logspace(-2,2,Npoints);
 
 FixeslMCoverW=1;
 
