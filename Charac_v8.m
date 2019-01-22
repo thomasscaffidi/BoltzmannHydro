@@ -67,8 +67,9 @@ end
 ChiHom=0;
 if(P.ShouldSolve==1)
     tol=1e-5;
-    maxit=200;
+    maxit=1000;
     [ChiHom,fl1,rr1,it1,rv1] = bicgstab(@ToSolve,ChiHomZero,tol,maxit,[],[],ChiHomZero);
+    fl1
 else
     ChiHom = ChiHomZero;
 end
