@@ -2,15 +2,16 @@ tic
 
 Npoints=100;
 Wlin=logspace(-2,2,Npoints);
-WoverlBlin=1.3;
+% Wlin=1;
+WoverlBlin=4.1;
 kFdslin=0.0;
 lMClin=logspace(-2,2,Npoints);
-
+% lMClin=0.01;
 
 FixeslMCoverW=1;
 
 Ny=101;
-NPhi=151;
+NPhi=101;
 NFT=1;
 
 SineApprox=1;

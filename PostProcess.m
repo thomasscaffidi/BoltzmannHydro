@@ -83,7 +83,7 @@ if(P.PlotFlag==1)
     
 end
 
-Xconductivity = trapz(YLin,XCurrent)/W;
+Xconductivity = trapz(YLin,XCurrent)/W
 Yconductivity = trapz(YLin,YCurrent)/W;
 Ey = (Density(end)-Density(1))/W;
 
