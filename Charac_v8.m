@@ -1,5 +1,5 @@
 function result = Charac_v8(P)
-tic
+
 
 W=P.W;
 lB=P.lB;
@@ -66,17 +66,22 @@ end
   
 ChiHom=0;
 if(P.ShouldSolve==1)
-    tol=1e-5;
+    tol=1e-3; %1e-5
     maxit=200;
-    [ChiHom,fl1,rr1,it1,rv1] = bicgstab(@ToSolve,ChiHomZero,tol,maxit,[],[],ChiHomZero);
+    Guess=ChiHomZero;
+    if(P.FirstInBatch~=1 && P.UseGuesses==1)
+        Guess=P.Guesses(:,P.FirstRun);
+    end
+    [ChiHom,fl1,rr1,it1,rv1] = bicgstab(@ToSolve,ChiHomZero,tol,maxit,[],[],Guess);
     fl1
+    it1
 else
     ChiHom = ChiHomZero;
 end
 
 resultArray = PostProcess(P,ChiHom,ChiBulk,ChiHomZero,fl1,Grid);
 
-result = struct('resultArray',resultArray,'L0tinv',0,'L1',0);
+result = struct('resultArray',resultArray,'L0tinv',0,'L1',0,'ChiHom',ChiHom);
 if(P.FirstRun==1)
     result.L0tinv=L0tinv;
     result.L1=L1;
@@ -93,7 +98,7 @@ end
 % toc
 
 function OutputVector = ToSolve(InputVector)
-    disp('iter')
+%     disp('iter')
     temp=L1*InputVector;
 % figure
 % %     plot(YLin(PointsSortedByPhiZeroAndS(:,4)),temp,'*')
