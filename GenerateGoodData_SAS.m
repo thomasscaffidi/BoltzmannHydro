@@ -1,6 +1,6 @@
 tic
 
-Npoints=51;
+Npoints=101;
 Wlin=logspace(2,-2,Npoints);
 % Wlin=0.01;
 % Wlin=1;
@@ -9,6 +9,12 @@ kFdslin=0.0;
 lMClin=logspace(-2,2,Npoints);
 % lMClin=0.05;
 UseGuesses=1;
+IndexToStart=0;
+if isfile('IndexToStart.txt')
+     IndexToStart=dlmread('IndexToStart.txt');
+else
+    dlmwrite('IndexToStart.txt',0);
+end
 
 FixeslMCoverW=1;
 
@@ -87,7 +93,11 @@ for ilMC =1:length(lMClin)
                 MyResultsTemp = zeros(1,6);
                 
                 index=index+1;
-                
+                index
+                if(index>=IndexToStart)
+                if(index==IndexToStart)
+                    P.FirstInBatch=1;
+                end
                 MyResultsTemp(1,1)=W;
                 MyResultsTemp(1,2)=WoverlB;
                 MyResultsTemp(1,3)=lMC;
@@ -107,6 +117,8 @@ for ilMC =1:length(lMClin)
                 
                 AllResults(index,1:length(MyResultsTemp))=MyResultsTemp;
                 dlmwrite(fileName,MyResultsTemp)
+                dlmwrite('IndexToStart.txt',index+1);
+                end
                 
             end
         end
