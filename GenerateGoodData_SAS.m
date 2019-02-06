@@ -1,6 +1,6 @@
 tic
 
-Npoints=101;
+Npoints=100;
 Wlin=logspace(2,-2,Npoints);
 % Wlin=0.01;
 % Wlin=1;
